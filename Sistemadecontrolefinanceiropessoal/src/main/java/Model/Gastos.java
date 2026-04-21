@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @jakarta.persistence.Entity
 @Table ( name = "Cadastro_Gastos")
-public class Entity {
+public class Gastos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

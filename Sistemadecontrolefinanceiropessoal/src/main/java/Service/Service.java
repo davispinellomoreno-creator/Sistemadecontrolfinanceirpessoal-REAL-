@@ -1,6 +1,6 @@
 package Service;
 
-import Model.Entity;
+import Model.Gastos;
 import Repository.Repository;
 
 
@@ -11,14 +11,14 @@ public class Service {
 
 
     private final Repository repository;
- private final Entity entity;
+    private final Gastos entity;
 
-   public Service(Repository repository, Entity entity) {
+    public Service(Repository repository, Gastos entity) {
         this.repository = repository;
-       this.entity = entity;
-   }
+        this.entity = entity;
+    }
 
-    public void salvarGasto(Entity gasto) {
+    public void salvarGasto(Gastos gasto) {
         repository.saveAndFlush(entity);
     }
 
@@ -28,14 +28,31 @@ public class Service {
                         new RuntimeException("Usuário não encontrado"));
     }
 
-       public void deletarGasto(Long id){
-          repository.deleteById(id);
+    public void deletarGasto(Long id) {
+        repository.deleteById(id);
 
-        }
-        public Entity atualizarGastos (Long id, Entity gasto) throws Throwable {
-             Entity gastosEntity = (Entity) repository.findById(id).orElseThrow( ()-> new RuntimeException("Gasto não encontrado"));
+    }
 
-        }
+    public Gastos atualizarGastos(Long id, Gastos gasto) throws Throwable {
+        Gastos gastosEntity = (Gastos) repository.findById(id).orElseThrow(() -> new RuntimeException("Gasto não encontrado"));
 
-   }
+    Gastos usuarioAtualizado = Gastos.builder()
+                .ID(gasto.getId() != null
+                        ? gasto.getId()
+                        : gastosEntity.getId())
+                .nome(gasto.getNomeDoGasto() != null
+                        ? gasto.getNomeDoGasto()
+                        : gastosEntity.getNomeDoGasto())
+                .email(gasto.getDia() != null
+                        ? gasto.getDia()
+                        : gastosEntity.getDia())
+
+                .build();
+
+
+
+    }
+}
+
+
 
