@@ -32,6 +32,10 @@ public class Service {
           repository.deleteById(id);
 
         }
+        public Entity atualizarGastos (Long id, Entity gasto) throws Throwable {
+             Entity gastosEntity = (Entity) repository.findById(id).orElseThrow( ()-> new RuntimeException("Gasto não encontrado"));
+
+        }
 
    }
 
