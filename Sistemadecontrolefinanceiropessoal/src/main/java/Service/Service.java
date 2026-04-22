@@ -36,17 +36,10 @@ public class Service {
     public Gastos atualizarGastos(Long id, Gastos gasto) throws Throwable {
         Gastos gastosEntity = (Gastos) repository.findById(id).orElseThrow(() -> new RuntimeException("Gasto não encontrado"));
 
-    Gastos usuarioAtualizado = Gastos.builder()
-                .ID(gasto.getId() != null
-                        ? gasto.getId()
-                        : gastosEntity.getId())
-                .nome(gasto.getNomeDoGasto() != null
-                        ? gasto.getNomeDoGasto()
-                        : gastosEntity.getNomeDoGasto())
-                .email(gasto.getDia() != null
-                        ? gasto.getDia()
-                        : gastosEntity.getDia())
-
+    Gastos gastosAtualizado = Gastos.builder()
+            .id(gasto.getId() != null ? gasto.getId() : gastosEntity.getId())
+                .nome(gasto.getNomeDoGasto() != null ? gasto.getNomeDoGasto() : gastosEntity.getNomeDoGasto())
+                .dia(gasto.getDia() != null ? gasto.getDia() : gastosEntity.getDia())
                 .build();
 
 
