@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.grammars.hql.HqlParser;
 
 import java.time.LocalDate;
 
@@ -26,5 +27,6 @@ public class Gastos {
    private String nomeDoGasto;
     private LocalDate dia;
     private double gasto;
+
 
 }
