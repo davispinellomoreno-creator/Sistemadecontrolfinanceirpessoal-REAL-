@@ -28,6 +28,16 @@ public class Controller {
 
                 return ResponseEntity.ok().build();
             }
+            @PutMapping
+                    public ResponseEntity<Void> atualizarGasto(@RequestBody Gastos gasto,@RequestParam Long id){
+                gastosService.atualizarGastos(gasto,id);
+                return ResponseEntity.ok().build();
+            }
+            @DeleteMapping
+                    public ResponseEntity <Gastos> deletarGastoPorId (@RequestParam Long id){
+                gastosService.deletarGasto(id);
+                return ResponseEntity.ok().build();
+            }
 
         }
 
