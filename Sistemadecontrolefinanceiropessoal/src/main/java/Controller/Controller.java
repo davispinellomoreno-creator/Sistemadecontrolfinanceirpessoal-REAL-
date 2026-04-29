@@ -25,24 +25,24 @@ public class Controller {
         return ResponseEntity.ok(gasto);
     }
 
-            @PostMapping
-            public ResponseEntity <Void> salvarGasto (@RequestBody Gastos gasto){
-                gastosService.salvarGasto(gasto);
-
-                return ResponseEntity.ok().build();
-            }
-            @PutMapping
-                    public ResponseEntity<Void> atualizarGasto(@RequestBody Gastos gasto,@RequestParam Long id){
-                gastosService.atualizarGastos(gasto,id);
-                return ResponseEntity.ok().build();
-            }
-            @DeleteMapping
-                    public ResponseEntity <Gastos> deletarGastoPorId (@RequestParam Long id){
-                gastosService.deletarGasto(id);
-                return ResponseEntity.ok().build();
-            }
+    @PostMapping
+    public ResponseEntity<Void> salvarGasto(@RequestBody Gastos gasto) {
+        gastosService.salvarGasto(gasto);
+        return ResponseEntity.ok().build();
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> atualizarGasto(@PathVariable Long id,
+                                               @RequestBody Gastos gasto) {
+        gastosService.atualizarGastos(id, gasto);
+        return ResponseEntity.ok().build();
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarGasto(@PathVariable Long id) {
+        gastosService.deletarGasto(id);
+        return ResponseEntity.ok().build();
+    }
 
         }
 
-    }
+
 
