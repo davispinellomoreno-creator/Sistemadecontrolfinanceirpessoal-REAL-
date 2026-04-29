@@ -11,16 +11,19 @@ public class Controller {
 
 
     private final Service gastosService;
-    private final Gastos gasto;
+
 
     public  Controller(Service gastosService) {
         this.gastosService = gastosService;
-        this.gasto = gasto;
+
+    }
 
 
-        @GetMapping
-     public ResponseEntity<Gastos> buscarGastosPorId(@RequestParam Long id){
-            return ResponseEntity.ok(gastosService.buscarGasto(id);
+    @GetMapping("/{id}")
+    public ResponseEntity<Gastos> buscarGastoPorId(@PathVariable Long id)  {
+        Gastos gasto = gastosService.buscarGasto(id);
+        return ResponseEntity.ok(gasto);
+    }
 
             @PostMapping
             public ResponseEntity <Void> salvarGasto (@RequestBody Gastos gasto){
@@ -42,4 +45,4 @@ public class Controller {
         }
 
     }
-}
+
