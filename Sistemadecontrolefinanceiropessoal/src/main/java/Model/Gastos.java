@@ -5,15 +5,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jdk.jshell.Snippet;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.grammars.hql.HqlParser;
 
 import java.time.LocalDate;
 
-
+@Data
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor

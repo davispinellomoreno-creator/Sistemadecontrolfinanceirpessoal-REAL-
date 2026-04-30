@@ -22,10 +22,9 @@ public class Service {
         repository.saveAndFlush(entity);
     }
 
-    public void buscarGasto(Long id) throws Throwable {
-        repository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("Usuário não encontrado"));
+    public Gastos buscarGasto(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Gasto não encontrado"));
     }
 
     public void deletarGasto(Long id) {
@@ -33,16 +32,19 @@ public class Service {
 
     }
 
-    public Gastos atualizarGastos(Long id, Gastos gasto) throws Throwable {
-        Gastos gastosEntity = (Gastos) repository.findById(id).orElseThrow(() -> new RuntimeException("Gasto não encontrado"));
+    public Gastos atualizarGastos(Long id, Gastos gasto) {
 
-    Gastos gastosAtualizado = Gastos.builder()
-            .id(gasto.getId() != null ? gasto.getId() : gastosEntity.getId())
-                .nome(gasto.getNomeDoGasto() != null ? gasto.getNomeDoGasto() : gastosEntity.getNomeDoGasto())
+        Gastos gastosEntity = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Gasto não encontrado"));
+
+        Gastos gastosAtualizado = Gastos.builder()
+                .id(gastosEntity.getId())
+                .nomeDoGasto(gasto.getNomeDoGasto() != null ? gasto.getNomeDoGasto() : gastosEntity.getNomeDoGasto())
                 .dia(gasto.getDia() != null ? gasto.getDia() : gastosEntity.getDia())
                 .build();
 
-
+        return repository.save(gastosAtualizado);
+    }
 
     }
 }

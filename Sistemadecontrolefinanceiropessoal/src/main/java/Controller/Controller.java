@@ -31,7 +31,7 @@ public class Controller {
         return ResponseEntity.ok().build();
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Void> atualizarGasto(@PathVariable Long id,
+    public ResponseEntity<Gastos> atualizarGasto(@PathVariable Long id,
                                                @RequestBody Gastos gasto) {
         gastosService.atualizarGastos(id, gasto);
         return ResponseEntity.ok().build();
