@@ -41,7 +41,7 @@ Este projeto consiste em um sistema de gestão financeira simples, desenvolvido 
 * Cadastro de despesas
 * Listagem de transações
 * Cálculo de saldo
-* Organização básica de dados financeiros
+* Organização dos dados inseridos
 
 ---
 
