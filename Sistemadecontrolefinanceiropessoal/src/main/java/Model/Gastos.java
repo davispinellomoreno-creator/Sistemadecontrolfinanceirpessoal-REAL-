@@ -1,9 +1,6 @@
 package Model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jdk.jshell.Snippet;
 import lombok.*;
 import org.hibernate.grammars.hql.HqlParser;
@@ -16,7 +13,7 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@jakarta.persistence.Entity
+@Entity
 @Table ( name = "Cadastro_Gastos")
 public class Gastos {
 
